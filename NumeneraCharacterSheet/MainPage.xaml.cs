@@ -25,6 +25,30 @@ namespace NumeneraCharacterSheet
         public MainPage()
         {
             this.InitializeComponent();
+            string appName = Windows.ApplicationModel.Package.Current.DisplayName;
+            //AppTitle.Text = appName;
+            ContenFrame.Navigate(typeof(SkillsUI));
+        }
+
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if(args.IsSettingsSelected)
+            {
+               // ContenFrame.Navigate(typeof(SettingsPage));
+            }
+
+            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+
+            switch (item.Tag.ToString())
+            {
+                case "skills":
+                    ContenFrame.Navigate(typeof(SkillsUI));
+                    break;
+                case "ausruestung":
+                    break;
+                case "hintergrund":
+                    break;
+            }
         }
     }
 }
